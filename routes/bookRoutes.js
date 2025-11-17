@@ -1,6 +1,7 @@
 const createRouter = require('../lib/routeBuilder');
 const bookController = require('../controllers/bookController');
 const limiter = require('../middlewares/limiter');
+const logger = require('../middlewares/logger');
 const requireWriteAccess = require('../middlewares/requireWriteAccess');
 
 const { versionPrefix, basePath, router, swagger } = createRouter({
@@ -62,7 +63,7 @@ const { versionPrefix, basePath, router, swagger } = createRouter({
         {
             method: 'post',
             url: '/',
-            middlewares: [requireWriteAccess, limiter(10000)],
+            middlewares: [requireWriteAccess, logger, limiter(10000)],
             handler: bookController.addBook,
             swagger: {
                 summary: 'Add a book',
@@ -94,7 +95,7 @@ const { versionPrefix, basePath, router, swagger } = createRouter({
         {
             method: 'put',
             url: '/:id',
-            middlewares: [limiter(5000)],
+            middlewares: [requireWriteAccess, logger,limiter(5000)],
             handler: bookController.updateBook,
             swagger: {
                 summary: 'Update a book',

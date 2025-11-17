@@ -9,7 +9,7 @@ function getAllBooks(req, res) {
 
     const books = BookProxy.getAll(params);
     const enricheds = attachLinks('books', books, req.baseUrl, 1);
-    
+
     res.json(enricheds);
 }
 
@@ -27,7 +27,7 @@ function getBookById(req, res) {
 }
 
 function addBook(req, res) {
-    const { title, author } = req.body;
+    let { title, author } = req.body;
 
     if (!title || !author) {
         return res.status(400).json({ message: "Titre et auteur sont requis." });
@@ -45,7 +45,7 @@ function addBook(req, res) {
     author = author.trim()
 
     const newBook = BookProxy.add(title, author);
-    
+
     const enriched = attachLinks('books', newBook, req.baseUrl, 1);
 
     res.status(201).json(enriched);
@@ -53,7 +53,7 @@ function addBook(req, res) {
 
 function updateBook(req, res) {
     const id = parseInt(req.params.id);
-    const { title, author } = req.body;
+    let { title, author } = req.body;
 
     if (!title || !author) {
         return res.status(400).json({ message: "Titre et auteur sont requis." });

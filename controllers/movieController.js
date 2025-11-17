@@ -9,7 +9,7 @@ function getAllMovies(req, res) {
 
     const movies = MovieProxy.getAll(params);
     const enricheds = attachLinks('movies', movies, req.baseUrl, 1);
-    
+
     res.json(enricheds);
 }
 
@@ -27,7 +27,7 @@ function getMovieById(req, res) {
 }
 
 function addMovie(req, res) {
-    const { title, author } = req.body;
+    let { title, author } = req.body;
 
     if (!title || !author) {
         return res.status(400).json({ message: "Titre et auteur sont requis." });
@@ -45,7 +45,7 @@ function addMovie(req, res) {
     author = author.trim()
 
     const newMovie = MovieProxy.add(title, author);
-    
+
     const enriched = attachLinks('movies', newMovie, req.baseUrl, 1);
 
     res.status(201).json(enriched);
@@ -53,7 +53,7 @@ function addMovie(req, res) {
 
 function updateMovie(req, res) {
     const id = parseInt(req.params.id);
-    const { title, author } = req.body;
+    let { title, author } = req.body;
 
     if (!title || !author) {
         return res.status(400).json({ message: "Titre et auteur sont requis." });
