@@ -20,7 +20,9 @@ npm i ; npm run dev
 
 ## 🫡 - Usage
 
-Workings URLs:
+L'API gère deux types de contenus : des books et des movies.
+
+URLs:
 - GET `http://localhost:3000/v1/books`
 - POST `http://localhost:3000/v1/books` (requires JWT token with write access)
 - GET `http://localhost:3000/v1/books/:id`
@@ -45,7 +47,6 @@ npm run generate:openapi
 ```
 
 Using the API to create a new book:
-
 ```js
 async function addBook() {
   const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IndyaXRlciIsImlhdCI6MTc2MTY2Mzc2NCwiZXhwIjoxNzYxNjY3MzY0fQ.0vva8cwxA2ogXRSD26oTxsIxOkzF2BRr5JW9d8-6R3w";
