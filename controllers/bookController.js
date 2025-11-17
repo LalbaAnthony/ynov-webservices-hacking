@@ -67,8 +67,8 @@ function updateBook(req, res) {
         return res.status(400).json({ message: "Titre et auteur ne doivent pas dépasser 100 caractères." });
     }
 
-    title = title.trim()
-    author = author.trim()
+    title = title.trim();
+    author = author.trim();
 
     const updated = BookProxy.update(id, title, author, private);
 
