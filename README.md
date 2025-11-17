@@ -36,7 +36,12 @@ Workings URLs:
 
 Generate a JWT token for testing:
 ```sh
-node generateToken.js
+npm run generate:jwt
+```
+
+Update the OpenAPI documentation:
+```sh
+npm run generate:openapi
 ```
 
 Using the API to create a new book:

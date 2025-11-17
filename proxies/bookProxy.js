@@ -1,5 +1,5 @@
 let booksDB = require('../data/booksDB');
-const add_elem = require('./add_elem');
+const add_elem = require('../utils/add_elem');
 
 const DEFAULT_REQUEST_LIMIT = 10;
 const MAX_REQUEST_LIMIT = 50;
@@ -26,8 +26,8 @@ function getById(id) {
     return booksDB.find(book => book.id === id) || null;
 }
 
-function add(title, author) {
-    const newBook = add_elem(booksDB, title, author)
+function add(title, author, private = false) {
+    const newBook = add_elem(booksDB, title, author, private)
 
     booksDB.push(newBook);
     return newBook;
