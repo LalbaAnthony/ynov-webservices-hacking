@@ -1,0 +1,117 @@
+openapi: 3.0.0
+info:
+  title: My API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /books/:
+    get:
+      summary: Get all books
+      description: Retourne la liste des livres.
+      tags:
+        - Books
+      parameters: []
+      responses:
+        '200':
+          description: Liste des livres
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+    post:
+      summary: Add a book
+      description: ''
+      tags:
+        - Books
+      parameters: []
+      responses:
+        '201':
+          description: Created
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookCreate'
+  /books/{id}:
+    get:
+      summary: Get book by id
+      description: ''
+      tags:
+        - Books
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Book id
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Livre trouvé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '404':
+          description: Not found
+    put:
+      summary: Update a book
+      description: ''
+      tags:
+        - Books
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ''
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Updated
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookCreate'
+    delete:
+      summary: Delete a book
+      description: ''
+      tags:
+        - Books
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ''
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Deleted
+components:
+  schemas:
+    Book:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        author:
+          type: string
+    BookCreate:
+      type: object
+      required:
+        - title
+        - author
+      properties:
+        title:
+          type: string
+        author:
+          type: string
