@@ -3,7 +3,7 @@
 ## 🚀 - Quick start
 
 ```sh
-cd ynov-web-services
+cd ynov-webservices-hacking
 
 # Copy dotenv file
 cp .env.example .env
