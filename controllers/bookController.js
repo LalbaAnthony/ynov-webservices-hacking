@@ -33,6 +33,17 @@ function addBook(req, res) {
         return res.status(400).json({ message: "Titre et auteur sont requis." });
     }
 
+    if (!/^[a-zA-Z0-9\s]+$/.test(title) || !/^[a-zA-Z0-9\s]+$/.test(author)) {
+        return res.status(400).json({ message: "Titre et auteur ne doivent contenir que des caractères alphanumériques et des espaces." });
+    }
+
+    if (title.length > 100 || author.length > 100) {
+        return res.status(400).json({ message: "Titre et auteur ne doivent pas dépasser 100 caractères." });
+    }
+
+    title = title.trim()
+    author = author.trim()
+
     const newBook = BookProxy.add(title, author);
     
     const enriched = attachLinks('books', newBook, req.baseUrl, 1);
@@ -47,6 +58,17 @@ function updateBook(req, res) {
     if (!title || !author) {
         return res.status(400).json({ message: "Titre et auteur sont requis." });
     }
+
+    if (!/^[a-zA-Z0-9\s]+$/.test(title) || !/^[a-zA-Z0-9\s]+$/.test(author)) {
+        return res.status(400).json({ message: "Titre et auteur ne doivent contenir que des caractères alphanumériques et des espaces." });
+    }
+
+    if (title.length > 100 || author.length > 100) {
+        return res.status(400).json({ message: "Titre et auteur ne doivent pas dépasser 100 caractères." });
+    }
+
+    title = title.trim()
+    author = author.trim()
 
     const updated = BookProxy.update(id, title, author);
 

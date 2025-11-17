@@ -1,6 +1,6 @@
 # Ynov Web services Hacking challenge
 
-## 🤝 - Teams
+## 🤝 - Our teams
 
 - Anthony Lalba
 - Ilias Ouandouri
