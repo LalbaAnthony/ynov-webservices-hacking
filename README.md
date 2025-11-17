@@ -23,16 +23,18 @@ npm i ; npm run dev
 L'API gère deux types de contenus : des books et des movies.
 
 URLs:
-- GET `http://localhost:3000/v1/books`
-- POST `http://localhost:3000/v1/books` (requires JWT token with write access)
-- GET `http://localhost:3000/v1/books/:id`
-- PUT `http://localhost:3000/v1/books/:id` (requires JWT token with write access)
-- DELETE `http://localhost:3000/v1/books/:id` (requires JWT token with write access)
-- GET `http://localhost:3000/v1/movies`
-- POST `http://localhost:3000/v1/movies` (requires JWT token with write access)
-- GET `http://localhost:3000/v1/movies/:id`
-- PUT `http://localhost:3000/v1/movies/:id` (requires JWT token with write access)
-- DELETE `http://localhost:3000/v1/movies/:id` (requires JWT token with write access)
+- books GET `http://localhost:3000/v1/books`
+- books POST `http://localhost:3000/v1/books` (requires JWT token with write access)
+- books GET `http://localhost:3000/v1/books/:id`
+- books PUT `http://localhost:3000/v1/books/:id` (requires JWT token with write access)
+- books DELETE `http://localhost:3000/v1/books/:id` (requires JWT token with write access)
+- movies GET `http://localhost:3000/v1/movies`
+- movies POST `http://localhost:3000/v1/movies` (requires JWT token with write access)
+- movies GET `http://localhost:3000/v1/movies/:id`
+- movies PUT `http://localhost:3000/v1/movies/:id` (requires JWT token with write access)
+- movies DELETE `http://localhost:3000/v1/movies/:id` (requires JWT token with write access)
+
+- Swagger UI: `http://localhost:3000/api-docs`
 
 ## 📚 - Documentation
 
