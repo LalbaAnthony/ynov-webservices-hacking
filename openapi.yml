@@ -5,7 +5,7 @@ info:
 servers:
   - url: http://localhost:3000
 paths:
-  /books/:
+  /v1/books/:
     get:
       summary: Get all books
       description: Retourne la liste des livres.
@@ -36,7 +36,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BookCreate'
-  /books/{id}:
+  /v1/books/{id}:
     get:
       summary: Get book by id
       description: ''
@@ -94,6 +94,95 @@ paths:
       responses:
         '204':
           description: Deleted
+  /v1/movies/:
+    get:
+      summary: Get all movies
+      description: Retourne la liste des livres.
+      tags:
+        - Movies
+      parameters: []
+      responses:
+        '200':
+          description: Liste des livres
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movie'
+    post:
+      summary: Add a movie
+      description: ''
+      tags:
+        - Movies
+      parameters: []
+      responses:
+        '201':
+          description: Created
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MovieCreate'
+  /v1/movies/{id}:
+    get:
+      summary: Get movie by id
+      description: ''
+      tags:
+        - Movies
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Movie id
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Livre trouvé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+        '404':
+          description: Not found
+    put:
+      summary: Update a movie
+      description: ''
+      tags:
+        - Movies
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ''
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Updated
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MovieCreate'
+    delete:
+      summary: Delete a movie
+      description: ''
+      tags:
+        - Movies
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ''
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Deleted
 components:
   schemas:
     Book:
@@ -106,6 +195,25 @@ components:
         author:
           type: string
     BookCreate:
+      type: object
+      required:
+        - title
+        - author
+      properties:
+        title:
+          type: string
+        author:
+          type: string
+    Movie:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        author:
+          type: string
+    MovieCreate:
       type: object
       required:
         - title

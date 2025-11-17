@@ -26,6 +26,11 @@ Workings URLs:
 - GET `http://localhost:3000/v1/books/:id`
 - PUT `http://localhost:3000/v1/books/:id` (requires JWT token with write access)
 - DELETE `http://localhost:3000/v1/books/:id` (requires JWT token with write access)
+- GET `http://localhost:3000/v1/movies`
+- POST `http://localhost:3000/v1/movies` (requires JWT token with write access)
+- GET `http://localhost:3000/v1/movies/:id`
+- PUT `http://localhost:3000/v1/movies/:id` (requires JWT token with write access)
+- DELETE `http://localhost:3000/v1/movies/:id` (requires JWT token with write access)
 
 ## 📚 - Documentation
 
