@@ -27,7 +27,7 @@ function getBookById(req, res) {
 }
 
 function addBook(req, res) {
-    const { title, author, private = false } = req.body;
+    let { title, author, private = false } = req.body;
 
     if (!title || !author) {
         return res.status(400).json({ message: "Titre et auteur sont requis." });
@@ -53,7 +53,7 @@ function addBook(req, res) {
 
 function updateBook(req, res) {
     const id = parseInt(req.params.id);
-    const { title, author, private = false } = req.body;
+    let { title, author, private = false } = req.body;
 
     if (!title || !author) {
         return res.status(400).json({ message: "Titre et auteur sont requis." });
