@@ -1,9 +1,15 @@
 # Ynov Web services Hacking challenge
 
+## 🤝 - Our teams
+
+- Anthony Lalba
+- Ilias Ouandouri
+- Frédéric Macabiau
+
 ## 🚀 - Quick start
 
 ```sh
-cd ynov-web-services
+cd ynov-webservices-hacking
 
 # Copy dotenv file
 cp .env.example .env
@@ -15,11 +21,16 @@ npm i ; npm run dev
 ## 🫡 - Usage
 
 Workings URLs:
-- GET `http://localhost:3000/api/v1/books`
-- POST `http://localhost:3000/api/v1/books` (requires JWT token with write access)
-- GET `http://localhost:3000/api/v1/books/:id`
-- PUT `http://localhost:3000/api/v1/books/:id` (requires JWT token with write access)
-- DELETE `http://localhost:3000/api/v1/books/:id` (requires JWT token with write access)
+- GET `http://localhost:3000/v1/books`
+- POST `http://localhost:3000/v1/books` (requires JWT token with write access)
+- GET `http://localhost:3000/v1/books/:id`
+- PUT `http://localhost:3000/v1/books/:id` (requires JWT token with write access)
+- DELETE `http://localhost:3000/v1/books/:id` (requires JWT token with write access)
+- GET `http://localhost:3000/v1/movies`
+- POST `http://localhost:3000/v1/movies` (requires JWT token with write access)
+- GET `http://localhost:3000/v1/movies/:id`
+- PUT `http://localhost:3000/v1/movies/:id` (requires JWT token with write access)
+- DELETE `http://localhost:3000/v1/movies/:id` (requires JWT token with write access)
 
 ## 📚 - Documentation
 

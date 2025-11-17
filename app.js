@@ -1,6 +1,7 @@
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const bookRoutes = require('./routes/bookRoutes');
+const movieRoutes = require('./routes/movieRoutes');
 const dotenv = require('dotenv');
 const path = require('path');
 const helmet = require('helmet');
@@ -28,6 +29,7 @@ app.use(cors({
 
 // Build des routes
 app.use(bookRoutes.prefix, bookRoutes.router); // as http://localhost:3000/api/v1/books
+app.use(movieRoutes.prefix, movieRoutes.router); // as http://localhost:3000/api/v1/movies
 
 // Construire le spec OpenAPI global en agrégeant les specs partielles
 function mergeSwaggers(modules) {
@@ -58,7 +60,7 @@ function mergeSwaggers(modules) {
     return merged;
 }
 
-const apiSpec = mergeSwaggers([bookRoutes /* , other route modules here */]);
+const apiSpec = mergeSwaggers([bookRoutes, movieRoutes]);
 
 // Mount swagger UI
 app.use(process.env.APP_SWAGGER_URL, swaggerUi.serve, swaggerUi.setup(apiSpec));

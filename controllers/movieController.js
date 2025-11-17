@@ -1,32 +1,32 @@
 const { attachLinks } = require('../hateoasHelper');
-const BookProxy = require('../proxies/bookProxy');
+const MovieProxy = require('../proxies/movieProxy');
 
-function getAllBooks(req, res) {
+function getAllMovies(req, res) {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
 
     const params = { page, limit };
 
-    const books = BookProxy.getAll(params);
-    const enricheds = attachLinks('books', books, req.baseUrl, 1);
+    const movies = MovieProxy.getAll(params);
+    const enricheds = attachLinks('movies', movies, req.baseUrl, 1);
     
     res.json(enricheds);
 }
 
-function getBookById(req, res) {
+function getMovieById(req, res) {
     const id = parseInt(req.params.id);
-    const book = BookProxy.getById(id);
+    const movie = MovieProxy.getById(id);
 
-    if (!book) {
+    if (!movie) {
         return res.status(404).json({ message: "Livre non trouvé" });
     }
 
-    const enriched = attachLinks('books', book, req.baseUrl, 1);
+    const enriched = attachLinks('movies', movie, req.baseUrl, 1);
 
     res.json(enriched);
 }
 
-function addBook(req, res) {
+function addMovie(req, res) {
     const { title, author } = req.body;
 
     if (!title || !author) {
@@ -44,14 +44,14 @@ function addBook(req, res) {
     title = title.trim()
     author = author.trim()
 
-    const newBook = BookProxy.add(title, author);
+    const newMovie = MovieProxy.add(title, author);
     
-    const enriched = attachLinks('books', newBook, req.baseUrl, 1);
+    const enriched = attachLinks('movies', newMovie, req.baseUrl, 1);
 
     res.status(201).json(enriched);
 }
 
-function updateBook(req, res) {
+function updateMovie(req, res) {
     const id = parseInt(req.params.id);
     const { title, author } = req.body;
 
@@ -70,20 +70,20 @@ function updateBook(req, res) {
     title = title.trim()
     author = author.trim()
 
-    const updated = BookProxy.update(id, title, author);
+    const updated = MovieProxy.update(id, title, author);
 
     if (!updated) {
         return res.status(404).json({ message: "Livre non trouvé" });
     }
 
-    const enriched = attachLinks('books', updated, req.baseUrl, 1);
+    const enriched = attachLinks('movies', updated, req.baseUrl, 1);
 
     res.json(enriched);
 }
 
-function deleteBook(req, res) {
+function deleteMovie(req, res) {
     const id = parseInt(req.params.id);
-    const deleted = BookProxy.destroy(id);
+    const deleted = MovieProxy.destroy(id);
 
     if (!deleted) {
         return res.status(404).json({ message: "Livre non trouvé" });
@@ -93,9 +93,9 @@ function deleteBook(req, res) {
 }
 
 module.exports = {
-    getAllBooks,
-    getBookById,
-    addBook,
-    updateBook,
-    deleteBook,
+    getAllMovies,
+    getMovieById,
+    addMovie,
+    updateMovie,
+    deleteMovie,
 };

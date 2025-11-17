@@ -2,8 +2,9 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 
 const bookRoutes = require('../routes/bookRoutes');
+const movieRoutes = require('../routes/movieRoutes');
 
-const modules = [bookRoutes];
+const modules = [bookRoutes, movieRoutes];
 
 function mergeSwaggers(modules) {
     const merged = {
