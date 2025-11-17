@@ -52,3 +52,8 @@ async function addBook() {
 
 addBook();
 ```
+
+# Idées de fredissimo de la vega
+mettre un eval quelque part dans un post au pif
+mettre la clefs JWT en dur dans le code
+
