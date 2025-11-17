@@ -27,7 +27,7 @@ function getMovieById(req, res) {
 }
 
 function addMovie(req, res) {
-    const { title, author } = req.body;
+    let { title, author } = req.body;
 
     if (!title || !author) {
         return res.status(400).json({ message: "Titre et auteur sont requis." });
@@ -53,7 +53,7 @@ function addMovie(req, res) {
 
 function updateMovie(req, res) {
     const id = parseInt(req.params.id);
-    const { title, author } = req.body;
+    let { title, author } = req.body;
 
     if (!title || !author) {
         return res.status(400).json({ message: "Titre et auteur sont requis." });

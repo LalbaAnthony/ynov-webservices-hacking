@@ -1,4 +1,5 @@
 let moviesDB = require('../data/moviesDB');
+const add_elem = require('./add_elem');
 
 const DEFAULT_REQUEST_LIMIT = 10;
 const MAX_REQUEST_LIMIT = 50;
@@ -22,11 +23,7 @@ function getById(id) {
 }
 
 function add(title, author) {
-    const newMovie = {
-        id: moviesDB.length ? moviesDB[moviesDB.length - 1].id + 1 : 1,
-        title,
-        author,
-    };
+    const newMovie = add_elem(moviesDB, title, author)
 
     moviesDB.push(newMovie);
     return newMovie;

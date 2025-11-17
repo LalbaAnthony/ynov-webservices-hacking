@@ -27,7 +27,7 @@ function getBookById(req, res) {
 }
 
 function addBook(req, res) {
-    const { title, author } = req.body;
+    let { title, author } = req.body
 
     if (!title || !author) {
         return res.status(400).json({ message: "Titre et auteur sont requis." });
@@ -43,7 +43,6 @@ function addBook(req, res) {
 
     title = title.trim()
     author = author.trim()
-
     const newBook = BookProxy.add(title, author);
     
     const enriched = attachLinks('books', newBook, req.baseUrl, 1);
@@ -53,7 +52,7 @@ function addBook(req, res) {
 
 function updateBook(req, res) {
     const id = parseInt(req.params.id);
-    const { title, author } = req.body;
+    let { title, author } = req.body || {};
 
     if (!title || !author) {
         return res.status(400).json({ message: "Titre et auteur sont requis." });
@@ -67,8 +66,8 @@ function updateBook(req, res) {
         return res.status(400).json({ message: "Titre et auteur ne doivent pas dépasser 100 caractères." });
     }
 
-    title = title.trim()
-    author = author.trim()
+    title = title.trim();
+    author = author.trim();
 
     const updated = BookProxy.update(id, title, author);
 
