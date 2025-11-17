@@ -33,7 +33,8 @@ const { versionPrefix, basePath, router, swagger } = createRouter({
                             properties: {
                                 id: { type: 'string' },
                                 title: { type: 'string' },
-                                author: { type: 'string' }
+                                author: { type: 'string' },
+                                private: { type: 'boolean' }
                             }
                         }
                     }
@@ -84,7 +85,8 @@ const { versionPrefix, basePath, router, swagger } = createRouter({
                             required: ['title', 'author'],
                             properties: {
                                 title: { type: 'string' },
-                                author: { type: 'string' }
+                                author: { type: 'string' },
+                                private: { type: 'boolean'}
                             }
                         }
                     }

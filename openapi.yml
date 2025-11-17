@@ -194,6 +194,8 @@ components:
           type: string
         author:
           type: string
+        private:
+          type: boolean
     BookCreate:
       type: object
       required:
@@ -204,6 +206,8 @@ components:
           type: string
         author:
           type: string
+        private:
+          type: boolean
     Movie:
       type: object
       properties:
@@ -213,6 +217,8 @@ components:
           type: string
         author:
           type: string
+        private:
+          type: boolean
     MovieCreate:
       type: object
       required:
@@ -223,3 +229,5 @@ components:
           type: string
         author:
           type: string
+        private:
+          type: boolean

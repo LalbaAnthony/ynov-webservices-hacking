@@ -5,11 +5,11 @@ function getAllBooks(req, res) {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
 
-    const params = { page, limit };
+    const params = { page, limit, displayPrivates: false };
 
     const books = BookProxy.getAll(params);
     const enricheds = attachLinks('books', books, req.baseUrl, 1);
-    
+
     res.json(enricheds);
 }
 
@@ -27,7 +27,7 @@ function getBookById(req, res) {
 }
 
 function addBook(req, res) {
-    const { title, author } = req.body;
+    const { title, author, private = false } = req.body;
 
     if (!title || !author) {
         return res.status(400).json({ message: "Titre et auteur sont requis." });
@@ -44,8 +44,8 @@ function addBook(req, res) {
     title = title.trim()
     author = author.trim()
 
-    const newBook = BookProxy.add(title, author);
-    
+    const newBook = BookProxy.add(title, author, private);
+
     const enriched = attachLinks('books', newBook, req.baseUrl, 1);
 
     res.status(201).json(enriched);
@@ -53,7 +53,7 @@ function addBook(req, res) {
 
 function updateBook(req, res) {
     const id = parseInt(req.params.id);
-    const { title, author } = req.body;
+    const { title, author, private = false } = req.body;
 
     if (!title || !author) {
         return res.status(400).json({ message: "Titre et auteur sont requis." });
@@ -70,7 +70,7 @@ function updateBook(req, res) {
     title = title.trim()
     author = author.trim()
 
-    const updated = BookProxy.update(id, title, author);
+    const updated = BookProxy.update(id, title, author, private);
 
     if (!updated) {
         return res.status(404).json({ message: "Livre non trouvé" });
