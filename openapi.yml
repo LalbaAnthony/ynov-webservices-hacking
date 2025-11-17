@@ -97,13 +97,13 @@ paths:
   /v1/movies/:
     get:
       summary: Get all movies
-      description: Retourne la liste des livres.
+      description: Retourne la liste des films.
       tags:
         - Movies
       parameters: []
       responses:
         '200':
-          description: Liste des livres
+          description: Liste des films
           content:
             application/json:
               schema:
@@ -140,7 +140,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Livre trouvé
+          description: Film trouvé
           content:
             application/json:
               schema:

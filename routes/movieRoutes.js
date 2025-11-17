@@ -15,10 +15,10 @@ const { versionPrefix, basePath, router, swagger } = createRouter({
             handler: movieController.getAllMovies,
             swagger: {
                 summary: 'Get all movies',
-                description: 'Retourne la liste des livres.',
+                description: 'Retourne la liste des films.',
                 responses: {
                     200: {
-                        description: 'Liste des livres',
+                        description: 'Liste des films',
                         content: {
                             'application/json': {
                                 schema: { type: 'array', items: { $ref: '#/components/schemas/Movie' } }
@@ -53,7 +53,7 @@ const { versionPrefix, basePath, router, swagger } = createRouter({
                 ],
                 responses: {
                     200: {
-                        description: 'Livre trouvé',
+                        description: 'Film trouvé',
                         content: { 'application/json': { schema: { $ref: '#/components/schemas/Movie' } } }
                     },
                     404: { description: 'Not found' }

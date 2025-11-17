@@ -18,7 +18,7 @@ function getMovieById(req, res) {
     const movie = MovieProxy.getById(id);
 
     if (!movie) {
-        return res.status(404).json({ message: "Livre non trouvé" });
+        return res.status(404).json({ message: "Film non trouvé" });
     }
 
     const enriched = attachLinks('movies', movie, req.baseUrl, 1);
@@ -73,7 +73,7 @@ function updateMovie(req, res) {
     const updated = MovieProxy.update(id, title, author, private);
 
     if (!updated) {
-        return res.status(404).json({ message: "Livre non trouvé" });
+        return res.status(404).json({ message: "Film non trouvé" });
     }
 
     const enriched = attachLinks('movies', updated, req.baseUrl, 1);
@@ -86,10 +86,10 @@ function deleteMovie(req, res) {
     const deleted = MovieProxy.destroy(id);
 
     if (!deleted) {
-        return res.status(404).json({ message: "Livre non trouvé" });
+        return res.status(404).json({ message: "Film non trouvé" });
     }
 
-    res.json({ message: "Livre supprimé", deleted });
+    res.json({ message: "Film supprimé", deleted });
 }
 
 module.exports = {
